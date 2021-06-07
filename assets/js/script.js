@@ -51,7 +51,7 @@ searchButton.on('click', function (event) {
 
 
   // fetch request gets a list of all the repos for the node.js organization
-  var requestUrl = 'http://api.openweathermap.org/geo/1.0/direct?q=London&limit=5&appid=9a238e861db9760ef96c88c9e9a32044'; //Get Lat and Log
+  var requestUrl = 'https://api.openweathermap.org/geo/1.0/direct?q=London&limit=5&appid=9a238e861db9760ef96c88c9e9a32044'; //Get Lat and Log
   var requestUrl2;
   var requestUrl3;
   var latReq;
@@ -127,7 +127,7 @@ for (var i=0; i<5; i++){
     console.log(data.daily[i].wind_speed);
     $("#date-"+i+"-humidity").text(data.daily[i].humidity+" %");
     console.log(data.daily[i].humidity);
-    $("#date-"+i+"-windspeed").text(data.daily[i].wind_speed+" mph");
+    $("#date-"+i+"-windspeed").text(data.daily[i].wind_speed+"  mph");
 }
 });
 }
