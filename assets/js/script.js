@@ -10,6 +10,8 @@
 
 
 // Check and render Saved Locations
+var targerID = 99;
+var cityData;
 var tosave=[];
 renderLocations();
 
@@ -33,7 +35,7 @@ searchButton.on('click', function (event) {
     locationText=$('.input').val(); 
     console.log("location" + locationText);
     if(locationText ===" " || locationText ==="" || locationText ===null){   //add conditions
-        alert("No City entered");
+        $("#alert-empty").text("No City entered");
     }
     else{
 
@@ -43,6 +45,10 @@ searchButton.on('click', function (event) {
         localStorage.setItem("saved-locations", JSON.stringify(tosave));
         renderLocations();
         $('.input').val("");
+        $("#alert-empty").text("");
+      processLocation(locationText);
+
+        
     }
 })
 
@@ -50,14 +56,13 @@ searchButton.on('click', function (event) {
 
 
 
-  // fetch request gets a list of all the repos for the node.js organization
-  var requestUrl = 'https://api.openweathermap.org/geo/1.0/direct?q=London&limit=5&appid=9a238e861db9760ef96c88c9e9a32044'; //Get Lat and Log
+  // var requestUrl = 'https://api.openweathermap.org/geo/1.0/direct?q=London&limit=5&appid=9a238e861db9760ef96c88c9e9a32044'; //Get Lat and Log
   var requestUrl2;
   var requestUrl3;
-  var latReq;
-  var lonReq;
 
-  // function getApi() {
+  function processLocation(cityText){
+requestUrl = 'https://api.openweathermap.org/geo/1.0/direct?q='+cityText+'&limit=5&appid=9a238e861db9760ef96c88c9e9a32044';
+console.log(requestUrl);
 
   fetch(requestUrl)
     .then(function (response) {
@@ -65,43 +70,21 @@ searchButton.on('click', function (event) {
     })
     .then(function (data) {
         console.log(data);
-        latReq = data[0].lat.toString();
-        lonReq = data[0].lon.toString();
-      console.log(latReq);
-      console.log(lonReq);
-      getWeather(latReq, lonReq);
-      getCityID(latReq, lonReq);
-
-
-      //Loop over the data to generate a table, each table row will have a link to the repo url
-    //   for (var i = 0; i < data.length; i++) {
-    //     // Creating elements, tablerow, tabledata, and anchor
-    //     var createTableRow = document.createElement('tr');
-    //     var tableData = document.createElement('td');
-    //     var link = document.createElement('a');
-
-    //     // Setting the text of link and the href of the link
-    //     link.textContent = data[i].html_url;
-    //     link.href = data[i].html_url;
-
-    //     // Appending the link to the tabledata and then appending the tabledata to the tablerow
-    //     // The tablerow then gets appended to the tablebody
-    //     tableData.appendChild(link);
-    //     createTableRow.appendChild(tableData);
-    //     tableBody.appendChild(createTableRow);
-    //   }
-    });
-// }
-
-// fetchButton.addEventListener('click', getApi);
-
+        cityData=data;
+      if(data.length>0){
+            console.log("Multiple Locations" + data.length);
+            $('.modal').addClass('is-active');
+            selectionList(data);
+      }
+      });
+      }
 
 
 
 function getWeather(latRec, lonRec){
 console.log(latRec);
 console.log(lonRec);
-requestUrl2 = 'https://api.openweathermap.org/data/2.5/onecall?lat='+latReq+'&lon='+lonReq+'&units=imperial&exclude=minutely,hourly,alerts&appid=9a238e861db9760ef96c88c9e9a32044'; //use Lat and Long
+requestUrl2 = 'https://api.openweathermap.org/data/2.5/onecall?lat='+latRec+'&lon='+lonRec+'&units=imperial&exclude=minutely,hourly,alerts&appid=9a238e861db9760ef96c88c9e9a32044'; //use Lat and Long
 console.log(requestUrl2);
 fetch(requestUrl2)
   .then(function (response) {
@@ -110,7 +93,8 @@ fetch(requestUrl2)
   .then(function (data) {
     //   console.log(data);
       console.log("Current Date:" + data.current.dt);
-      $("#current-date").text(data.current.dt);
+      var currentDate=dateConvert(data.current.dt);
+      $("#current-date").text(currentDate);
       console.log("Current Temp:" + data.current.temp+" °F");
       $("#current-temp").text(data.current.temp+" °F");
       console.log("Current Humidity:" + data.current.humidity+" %");
@@ -119,9 +103,10 @@ fetch(requestUrl2)
       $("#current-windspeed").text(data.current.wind_speed+" mph");
       console.log("Current UV Index:" + data.current.uvi);
       $("#current-uvi").text(data.current.uvi)
-for (var i=0; i<5; i++){
+for (var i=1; i<6; i++){
+    var futureDate=dateConvert(data.daily[i].dt);
     console.log(data.daily[i].dt);
-    $("#date-"+i).text(data.current.dt);
+    $("#date-"+i).text(futureDate);
     console.log(data.daily[i].temp.day);
     $("#date-"+i+"-temp").text(data.daily[i].temp.day+" °F");
     console.log(data.daily[i].wind_speed);
@@ -146,3 +131,93 @@ fetch(requestUrl3)
 });
 
 }
+
+//From: https://www.geeksforgeeks.org/how-to-convert-date-to-another-timezone-in-javascript/
+function dateConvert(dateRaw){
+    var newdate = new Date(dateRaw*1000).toDateString();
+    var usTime = newdate.toLocaleString("en-US", {timeZone: "America/New_York"});
+    return usTime;
+}
+
+
+
+
+
+
+function selectionList(data){
+  for(var i=0; i<data.length; i++){
+    //  $("#city"+[i]).text(data[i].name+", "+data[i].country+", ");
+     if (typeof data[i].state == 'string')
+     {
+      $("#city-"+[i]).text(data[i].name+" - "+data[i].state+", "+data[i].country);
+      // $("#state"+[i]).text(data[i].state);
+     }
+    else{
+      $("#city-"+[i]).text(data[i].name+" - "+data[i].country);
+        }
+   }
+
+
+  
+
+
+
+}
+
+// Modal Button
+
+var modalDelete=$(".delete");   
+modalDelete.on('click', function (event) {
+  event.preventDefault();
+  removeModal();
+})
+
+function removeModal(){
+  cleanModal();
+  $('.modal').removeClass('is-active');
+
+}
+
+function cleanModal(){
+  for(var i=0; i<5; i++){
+      $("#city-"+[i]).text("");
+}}
+
+
+
+// var modalCancel=$("#cancel-button");   
+// modalCancel.on('click', function (event) {
+//   event.preventDefault();
+//   $('.modal').removeClass('is-active');
+
+// })
+
+
+
+function sendCoordinates(){
+    var latReq;
+    var lonReq;
+    console.log(targerID);
+    console.log("current data:"+cityData);
+    latReq = cityData[targerID].lat.toString();
+    lonReq = cityData[targerID].lon.toString();
+    console.log(latReq);
+    console.log(lonReq);
+    getWeather(latReq, lonReq);
+    getCityID(latReq, lonReq);
+}
+
+    var modalTarget=$(".selection");   
+    modalTarget.on('click', function (event) {
+      event.preventDefault();
+      var targerClicked = event.target;
+      targerID=targerClicked.id;
+      targerID=targerID.charAt(5);
+      targerID=parseInt(targerID);
+      console.log(targerID);
+      removeModal();
+      sendCoordinates();
+      cleanModal();
+     })
+
+
