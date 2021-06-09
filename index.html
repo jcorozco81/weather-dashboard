@@ -30,6 +30,7 @@
     <div class="column is-one-quarter">
         <div class="box">
             <h1 class="title">Search for a City:</h1>
+            <h6 class="subtitle is-6" id="alert-empty" style="color:red"></h6>
             <input class="input" type="text" placeholder="New York" id="location-text">
             <button class="button" id="search-location">Search</button>
           </div>
@@ -68,14 +69,8 @@
                     </div>
                 </div>
                 <div class="tile is-parent">
-                    
-                    <article class="tile is-child box" id="tile-0">
-                        <p class="title" id="date-0"></p>
-                        <p class="subtitle">Temperature: <span id="date-0-temp"></span></p>
-                        <p class="subtitle">Humidity: <span id="date-0-humidity"></span></p>
-                        <p class="subtitle">Wind Speed: <span id="date-0-windspeed"></span></p>
-                    </article>
-                    
+                   
+                  
                     <article class="tile is-child box" id="tile-1">
                         <p class="title" id="date-1"></p>
                         <p class="subtitle">Temperature: <span id="date-1-temp"></span></p>
@@ -104,6 +99,13 @@
                         <p class="subtitle">Wind Speed: <span id="date-4-windspeed"></span></p>
                     </article>
 
+                    <article class="tile is-child box" id="tile-5">
+                        <p class="title" id="date-5"></p>
+                        <p class="subtitle">Temperature: <span id="date-5-temp"></span></p>
+                        <p class="subtitle">Humidity: <span id="date-5-humidity"></span></p>
+                        <p class="subtitle">Wind Speed: <span id="date-5-windspeed"></span></p>
+                    </article>
+
                 </div>
             </div>              
         </div>    
@@ -111,6 +113,32 @@
 </div>
     
     </body>
+
+
+<div class="modal">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Select Location</p>
+      <button class="delete" aria-label="close"></button>
+    </header>
+    <section class="modal-card-body">
+      <!-- Content ... -->
+      <p class="selection"><span id="city-0"></span><span id="state0"></span></p>
+      <p class="selection"><span id="city-1"></span><span id="state1"></span></p>
+      <p class="selection"><span id="city-2"></span><span id="state2"></span></p>
+      <p class="selection"><span id="city-3"></span><span id="state3"></span></p>
+      <p class="selection"><span id="city-4"></span><span id="state4"></span></p>
+    </section>
+    <footer class="modal-card-foot">
+      <!-- <button class="button is-success">Select</button>
+      <button class="button" id="cancel-button">Cancel</button> -->
+    </footer>
+  </div>
+</div>
+
+
+
     <footer></footer>
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="./assets/js/script.js"></script>
