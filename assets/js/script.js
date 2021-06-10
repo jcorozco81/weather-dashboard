@@ -102,7 +102,20 @@ fetch(requestUrl2)
       console.log("Current Wind Speed:" + data.current.wind_speed+" mph");
       $("#current-windspeed").text(data.current.wind_speed+" mph");
       console.log("Current UV Index:" + data.current.uvi);
+ 
+      $('#current-uvi').removeClass();
+      // var uvIndextxt;
+      if(data.current.uvi<3){
+        $('#current-uvi').addClass('tag is-success');
+      }
+      else if(data.current.uvi<8 && data.current.uvi>=3){
+        $('#current-uvi').addClass('tag is-warning');
+      }
+      else if(data.current.uvi>=8){
+        $('#current-uvi').addClass('tag is-danger');
+      }
       $("#current-uvi").text(data.current.uvi)
+
 for (var i=1; i<6; i++){
     var futureDate=dateConvert(data.daily[i].dt);
     console.log(data.daily[i].dt);
@@ -206,12 +219,15 @@ function sendCoordinates(){
     getWeather(latReq, lonReq);
     getCityID(latReq, lonReq);
 }
-
+    var selectedCity;
     var modalTarget=$(".selection");   
     modalTarget.on('click', function (event) {
       event.preventDefault();
-      var targerClicked = event.target;
-      targerID=targerClicked.id;
+      var targetClicked = event.target;
+      targerID=targetClicked.id;
+      selectedCity = event.target.innerText;
+      console.log("Target Clicked: " + selectedCity);
+      $('#current-city').text(selectedCity);
       targerID=targerID.charAt(5);
       targerID=parseInt(targerID);
       console.log(targerID);
