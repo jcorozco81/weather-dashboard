@@ -1,0 +1,33 @@
+#alert-empty{
+    color: red;
+}
+
+#search-location, #search-location{
+    margin: 10px;
+}
+
+.icon{
+    display: none;
+    width: 100px;
+    height: 100px;
+    padding: left 50px;
+    padding: right 50px
+}
+
+#current-icon{
+
+    width: 100px;
+    height: 100px;
+    align-self: center;
+    
+}
+
+    main{
+display: none;
+}
+
+.content{
+    text-align: left;
+
+}
+
