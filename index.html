@@ -52,15 +52,18 @@
             <div class="tile is-vertical">
                 <div class="tile is-parent">
                     <div class="tile is-child box">
-                        <p class="title">Current Weather for: <span id="current-city"></span> <span id="current-date"></span></p>
+                        <p class="title">Current Weather for: <span id="current-city"></span></p>
                     </div>
                 </div>
                 <div class="tile is-parent">
                     <div class="tile is-child box"id="tile-current">
+                      <p class="title" id="current-date"></p>
+                      <div class="content is-medium">
                         <p class="subtitle">Temperature: <span id="current-temp"></span></p>
                         <p class="subtitle">Humidity: <span id="current-humidity"></span></p>
                         <p class="subtitle">Wind Speed: <span id="current-windspeed"></span></p>
                         <p class="subtitle">UV Index: <span id="current-uvi"></span></p>
+                      </div>
                     </div>
                 </div>
                 <div class="tile is-parent">
@@ -73,37 +76,47 @@
                   
                     <article class="tile is-child box" id="tile-1">
                         <p class="title" id="date-1"></p>
+                      <div class="content is-normal">
                         <p class="subtitle">Temperature: <span id="date-1-temp"></span></p>
                         <p class="subtitle">Humidity: <span id="date-1-humidity"></span></p>
                         <p class="subtitle">Wind Speed: <span id="date-1-windspeed"></span></p>
+                      </div>
                     </article>
 
                     <article class="tile is-child box" id="tile-2">
                         <p class="title" id="date-2"></p>
+                      <div class="content is-normal">
                         <p class="subtitle">Temperature: <span id="date-2-temp"></span></p>
                         <p class="subtitle">Humidity: <span id="date-2-humidity"></span></p>
                         <p class="subtitle">Wind Speed: <span id="date-2-windspeed"></span></p>
+                      </div>
                     </article>
 
                     <article class="tile is-child box" id="tile-3">
                         <p class="title" id="date-3"></p>
+                      <div class="content is-normal">
                         <p class="subtitle">Temperature: <span id="date-3-temp"></span></p>
                         <p class="subtitle">Humidity: <span id="date-3-humidity"></span></p>
                         <p class="subtitle">Wind Speed: <span id="date-3-windspeed"></span></p>
+                      </div>
                     </article>
 
                     <article class="tile is-child box" id="tile-4">
                         <p class="title" id="date-4"></p>
+                      <div class="content is-normal">
                         <p class="subtitle">Temperature: <span id="date-4-temp"></span></p>
                         <p class="subtitle">Humidity: <span id="date-4-humidity"></span></p>
                         <p class="subtitle">Wind Speed: <span id="date-4-windspeed"></span></p>
+                        </div>
                     </article>
 
                     <article class="tile is-child box" id="tile-5">
                         <p class="title" id="date-5"></p>
+                      <div class="content is-normal">
                         <p class="subtitle">Temperature: <span id="date-5-temp"></span></p>
                         <p class="subtitle">Humidity: <span id="date-5-humidity"></span></p>
                         <p class="subtitle">Wind Speed: <span id="date-5-windspeed"></span></p>
+                      </div>
                     </article>
 
                 </div>
@@ -124,11 +137,19 @@
     </header>
     <section class="modal-card-body">
       <!-- Content ... -->
-      <p class="selection"><span id="city-0"></span><span id="state0"></span></p>
+      <ul>
+        <li><button class="button is-white selection" id="city-0"></button></li>
+        <li><button class="button is-white selection" id="city-1"></button></li>
+        <li><button class="button is-white selection" id="city-2"></button></li>
+        <li><button class="button is-white selection" id="city-3"></button></li>
+        <li><button class="button is-white selection" id="city-4"></button></li>
+      </ul>
+
+      <!-- <p class="selection"><span id="city-0"></span><span id="state0"></span></p>
       <p class="selection"><span id="city-1"></span><span id="state1"></span></p>
       <p class="selection"><span id="city-2"></span><span id="state2"></span></p>
       <p class="selection"><span id="city-3"></span><span id="state3"></span></p>
-      <p class="selection"><span id="city-4"></span><span id="state4"></span></p>
+      <p class="selection"><span id="city-4"></span><span id="state4"></span></p> -->
     </section>
     <footer class="modal-card-foot">
       <!-- <button class="button is-success">Select</button>
