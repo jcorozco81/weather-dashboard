@@ -38,23 +38,23 @@ Or
 
 1. The webpage will load on the web browser, and it shall be like the one shown in the following picture.
 
-[Screenshot: Empty Page](/assets/images/weather-dashboard-1.png)
+[Screenshot: Empty Page](/assets/images/weather-dashboard-1.PNG)
 
-![Screenshot: Empty Page](/assets/images/weather-dashboard-1.png)
+![Screenshot: Empty Page](/assets/images/weather-dashboard-1.PNG)
 
 2. To obtain the weather data for a city, enter the city name on the **input text field** located on the webpage top left side. Click on the **Search** button to get the data. 
 
 3. A **modal** will appear on the screen with a list of cities with the same name along with their corresponding country code and state code (US Cities Only). Click on the desired city.
 
-[Screenshot: Empty Page](/assets/images/weather-dashboard-2.png)
+[Screenshot: Empty Page](/assets/images/weather-dashboard-2.PNG)
 
-![Screenshot: Empty Page](/assets/images/weather-dashboard-2.png)
+![Screenshot: Empty Page](/assets/images/weather-dashboard-2.PNG)
 
 3. The weather information for the selected city will appear on the screen, on the top right side will be the current weather information and below that, five cards will appear with the weather information for five days following the current date.
 
-[Screenshot: Empty Page](/assets/images/weather-dashboard-3.png)
+[Screenshot: Empty Page](/assets/images/weather-dashboard-3.PNG)
 
-![Screenshot: Empty Page](/assets/images/weather-dashboard-3.png)
+![Screenshot: Empty Page](/assets/images/weather-dashboard-3.PNG)
 
 4. All previously searched cities are saved in the browser's local storage. The saved cities are displayed on the left side of the web page. The saved cities can be clicked on to obtain their weather information. 
 
