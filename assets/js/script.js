@@ -1,9 +1,6 @@
 // https://api.openweathermap.org/data/2.5/forecast?id=524901&appid=9a238e861db9760ef96c88c9e9a32044
 // https://api.openweathermap.org/data/2.5/weather?q=columbus&appid=524901&appid=9a238e861db9760ef96c88c9e9a32044
 
-// 7d3989331b228c9223971532186a46b2
-// 9a238e861db9760ef96c88c9e9a32044 - jcorozco81
-
 // OneCall API address: 'https://api.openweathermap.org/data/2.5/onecall?lat=33.44&lon=-94.04&exclude=minutely,hourly,alerts&appid=9a238e861db9760ef96c88c9e9a32044'
 // Current by City ID: 'https://api.openweathermap.org/data/2.5/weather?id=2172797&appid=9a238e861db9760ef96c88c9e9a32044'
 // Geocoding: 'http://api.openweathermap.org/geo/1.0/direct?q=London&limit=5&appid=9a238e861db9760ef96c88c9e9a32044' - City Name and Lat and Long
